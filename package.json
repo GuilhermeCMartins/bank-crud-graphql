@@ -3,12 +3,13 @@
     "name": "Guilherme Courbassier Martins"
   },
   "description": "Implements an bank crud with Leaky Bucket",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "node dist/server.js",
     "dev": "ts-node src/server.ts",
-    "build": "tsc",
-    "lint": "eslint . --ext .ts",
-    "format": "prettier --write ."
+    "start": "ts-node -r dotenv/config ./build/core/server/index.js",
+    "build": "tsc --noCheck -p tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./build",
+    "lint": "biome check .",
+    "format": "biome format --write ."
   },
   "dependencies": {
     "apollo-server-koa": "^3.13.0",
@@ -18,7 +19,9 @@
     "koa-bodyparser": "^4.4.1",
     "koa-logger": "^3.2.1",
     "koa-router": "^13.0.1",
-    "mongoose": "^8.7.1"
+    "mongoose": "^8.7.1",
+    "tsconfig-paths": "^3.9.0",
+    "tscpaths": "0.0.9"
   },
   "devDependencies": {
     "@types/koa": "^2.15.0",
@@ -26,14 +29,12 @@
     "@types/koa-logger": "^3.1.5",
     "@types/koa-router": "^7.4.8",
     "@types/node": "^22.7.5",
-    "@typescript-eslint/eslint-plugin": "^8.9.0",
-    "@typescript-eslint/parser": "^8.9.0",
-    "eslint": "^9.12.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
-  }
+    "typescript": "^5.6.3",
+    "@biomejs/biome": "^1.9.2"
+  },
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }

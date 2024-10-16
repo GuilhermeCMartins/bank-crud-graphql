@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  db:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongodb
+      MONGO_INITDB_ROOT_PASSWORD: mongodb
+      MONGO_INITDB_DATABASE: bank
+    volumes:
+      - ./docker/db:/data/db
+    ports:
+      - 27017:27017

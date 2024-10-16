@@ -4,3 +4,4 @@ node_modules/
 .zed
 .env
 config.*.yaml
+build
