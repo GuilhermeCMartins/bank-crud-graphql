@@ -1,17 +1,30 @@
 {
   "compilerOptions": {
-    "skipLibCheck": true,
-    "target": "ESNext",
-    "module": "CommonJS",
-    "outDir": "build",
-    "baseUrl": "./src",
+    "strict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "resolveJsonModule": true,
+    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
     "esModuleInterop": true,
-    "paths": {}
-  },
-  "include": ["src/**/*", "src/*", "koa"],
-  "typeRoots": ["./node_modules/@types", "./src/types"],
-  "exclude": ["node_modules"]
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "paths": {
+      "@*": ["./src/*"],
+      "@common/*": ["./src/common/*"],
+      "@views/*": ["./src/application/adapters/http/views/*"],
+      "@adapters/*": ["./src/application/adapters/*"],
+      "@controllers": ["./src/application/adapters/http/controllers"],
+      "@controller/*": ["./src/application/adapters/http/controllers/*"],
+      "@middlewares": ["./src/application/adapters/http/middlewares"],
+      "@entity/*": ["./src/application/entities/*"]
+    }
+  }
 }
