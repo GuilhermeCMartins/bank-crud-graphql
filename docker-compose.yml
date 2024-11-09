@@ -1,15 +1,19 @@
 services:
   db:
-    image: mongo:latest
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: mongodb
-      MONGO_INITDB_ROOT_PASSWORD: mongodb
-      MONGO_INITDB_DATABASE: bank
-    volumes:
-      - ./docker/db:/data/db
+    image: mongo:6
+    hostname: mongo1
+    container_name: mongo1
     ports:
       - 27017:27017
+    entrypoint: ['mongod', '--replSet', 'myReplicaSet', '--bind_ip', '0.0.0.0']
+  mongosetup:
+    image: mongo:6
+    depends_on:
+      - db
+    volumes:
+      - ./scripts:/scripts
+    restart: 'no'
+    entrypoint: ['bash', '/scripts/mongo_setup.sh']
 
   redis:
     image: redis:latest

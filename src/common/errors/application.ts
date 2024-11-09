@@ -6,7 +6,7 @@ export class ApplicationError extends Error {
 
   constructor(msg: string, additionalInfo?: unknown) {
     super(msg);
-    this.message = `${this.constructor.name}: ${msg}`;
+    this.message = msg;
     this.additionalInfo = additionalInfo;
   }
 

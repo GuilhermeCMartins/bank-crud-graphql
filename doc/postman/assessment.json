@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "0751a46a-037a-4482-93f5-e037f4f2ff19",
+		"name": "Woovi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30017365"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-tenant-id",
+								"value": "tenant",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"query GetAccounts { getAccounts { id, number, holderName, balance } }\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-tenant-id",
+								"value": "tenant",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"mutation { createAccount(number: \\\"232\\\", holderName: \\\"John Doe\\\", balance: 1000.0) { id, number, holderName, balance } }\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-tenant-id",
+								"value": "tenant",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"mutation { createTransaction(receiver: \\\"788efd0d-c4b4-4bb2-8c8e-30f1cbd5f2e6\\\", sender: \\\"2e3816ff-f4bd-46e3-b958-e5a31429ae8e\\\", amount: 100.0, type: \\\"transfer\\\") { id, receiver, sender, amount, type } }\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-tenant-id",
+								"value": "tenant",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"query { getTransactionsByAccountId(accountId: \\\"ID_DO_RECEBEDOR\\\") { id, receiver, sender, amount, type } }\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/graphql"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

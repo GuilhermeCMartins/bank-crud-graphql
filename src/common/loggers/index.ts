@@ -1,4 +1,4 @@
-import Koa, { Context } from 'koa';
+import type { Context } from 'koa';
 import logger from 'koa-logger';
 import Chalk, { type ChalkInstance } from 'chalk';
 
