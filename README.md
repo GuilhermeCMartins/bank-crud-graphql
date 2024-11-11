@@ -1,6 +1,8 @@
 ## Multi-Tenant API Project - README
 This project implements a multi-tenant API using Node.js, Koa, MongoDB, and Mongoose. It enables managing data for different tenants independently, applying a tenant middleware and plugin to ensure data security and consistency.
 
+## - It took 20 hours to finish this project.
+
 # Table of Contents
 - Project Description
 - Technologies Used
