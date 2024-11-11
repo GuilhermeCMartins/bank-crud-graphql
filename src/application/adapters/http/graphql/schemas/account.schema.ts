@@ -6,6 +6,12 @@ export const accountTypeDefs = gql`
     number: String!
     holderName: String!
     balance: Float!
+    email: String!
+    currency: String!
+  }
+
+  type AuthToken {
+    token: String!
   }
 
   type Query {
@@ -15,10 +21,12 @@ export const accountTypeDefs = gql`
 
   type Mutation {
     createAccount(
-      number: String!
+      email: String!
       holderName: String!
-      balance: Float!
+      password: String!
+      currency: String!
     ): Account
     deleteAccount(id: ID!): Boolean
+    login(email: String!, password: String!): AuthToken
   }
 `;

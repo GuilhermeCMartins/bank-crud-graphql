@@ -1,16 +1,16 @@
 import MongoDbConnection from '@application/database/db.connection';
 import { seedTenants } from '@application/database/tenant.seeder';
-import { formatGraphQLResponse } from '@application/middlewares/graphql-response';
-import tenantIdentifier from '@application/middlewares/tenant';
 import { ApolloServer } from 'apollo-server-koa';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
-import { formatGraphQLError } from '@application/middlewares/graphql-error';
 import rateLimitPlugin from '@common/plugins/rate-limit.plugin';
 import { accountTypeDefs } from '@application/adapters/http/graphql/schemas/account.schema';
 import { transactionTypeDefs } from '@application/adapters/http/graphql/schemas/transaction.schema';
 import { accountResolvers } from '@application/adapters/http/graphql/resolvers/account.resolver';
 import { transactionResolvers } from '@application/adapters/http/graphql/resolvers/transaction.resolver';
+import tenantIdentifier from '@application/middlewares/tenant-identifier.middleware';
+import { formatGraphQLResponse } from '@application/middlewares/graphql-response.middleware';
+import { formatGraphQLError } from '@application/middlewares/graphql-error.middleware';
 
 export class Application {
   private app: Koa;

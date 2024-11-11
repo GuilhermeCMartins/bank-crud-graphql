@@ -1,5 +1,5 @@
+import { ApplicationError } from '@common/errors/application';
 import type { ApolloError } from 'apollo-server-koa';
-import { ApplicationError } from '@common/errors';
 
 export function formatGraphQLError(error: ApolloError) {
   if (error.originalError instanceof ApplicationError) {

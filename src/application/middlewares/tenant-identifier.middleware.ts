@@ -1,8 +1,8 @@
 import type { Context, Next } from 'koa';
 import tenant, { TenantStatus } from '@application/entities/tenant.entity';
-import { UnsupportedTenant } from '@common/errors';
 import TenantPlugin from '@common/plugins/tenant.plugin';
 import RateLimiter from '@common/leaky-bucket';
+import { UnsupportedTenant } from '@common/errors/tenant';
 
 const tenantIdentifier = async (ctx: Context, next: Next) => {
   const tenantId = ctx.request.headers['x-tenant-id'];

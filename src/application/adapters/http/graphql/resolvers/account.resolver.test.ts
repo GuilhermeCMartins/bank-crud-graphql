@@ -93,14 +93,16 @@ describe('Account Resolvers', () => {
   it('should create a new account', async () => {
     const mutation = gql`
       mutation CreateAccount(
-        $number: String!
+        $email: String!
         $holderName: String!
-        $balance: Float!
+        $password: String!
+        $currency: String!
       ) {
         createAccount(
-          number: $number
+          email: $email
           holderName: $holderName
-          balance: $balance
+          password: $password
+          currency: $currency
         ) {
           id
           number
@@ -111,14 +113,16 @@ describe('Account Resolvers', () => {
     `;
 
     const variables = {
-      number: '3',
+      email: 'teste@teste.com',
       holderName: 'New Account',
-      balance: 300,
+      password: '123',
+      currency: 'usd',
     };
     const response = await server.executeOperation({
       query: mutation,
       variables,
     });
+
     expect(response.data?.createAccount).toEqual({
       id: '3',
       number: '3',

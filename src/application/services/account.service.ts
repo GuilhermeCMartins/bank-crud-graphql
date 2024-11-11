@@ -1,5 +1,6 @@
 import account, { type IAccount } from '@application/entities/account.entity';
 import type mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 export class AccountService {
   async getAccounts(): Promise<IAccount[] | null> {
@@ -36,5 +37,16 @@ export class AccountService {
   async deleteAccount(id: string): Promise<boolean> {
     const result = await account.findByIdAndDelete(id);
     return result !== null;
+  }
+
+  async getAccountByEmail(email: string): Promise<IAccount | null> {
+    return await account.findOne({ email });
+  }
+
+  async validatePassword(
+    account: IAccount,
+    password: string
+  ): Promise<boolean> {
+    return await bcrypt.compare(password, account.password);
   }
 }

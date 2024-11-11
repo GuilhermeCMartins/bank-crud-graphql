@@ -22,8 +22,19 @@ The developed API manages user accounts and transactions, ensuring data isolatio
 
 # Installation and Configuration
 
-TO-DO
+```
+docker-compose up -d
+```
+
+- Just copy .env.example to .env to run the app
+
+```
+pnpm dev
+```
+
 
 # Potential Future Improvements
 
-TO-DO
+- Identify tenant based on JWT Token
+- Implements all differents validations from BACEN
+- Add logger to application
